@@ -1,66 +1,85 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="icon" href="./Images/Icon/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Способи приготування курки</title>
+    <title>Способи приготування курки | Кулінарні рецепти</title>
+    
+    <!-- SEO Metadata -->
+    <meta name="description" content="Discover 10 delicious chicken recipes from oven-roasted to teriyaki. Learn easy cooking techniques and enjoy mouth-watering chicken dishes.">
+    <meta name="keywords" content="курка рецепти, приготування курки, курка теріякі, курка в духовці, курка гриль">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Способи приготування курки">
+    <meta property="og:description" content="Discover 10 delicious chicken recipes from oven-roasted to teriyaki.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./Images/Header/Raw_Chicken.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./Images/Icon/icon.png">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Performance Optimization -->
+    <link rel="preload" href="./Images/Header/Raw_Chicken.jpg" as="image">
+    <link rel="preload" href="script.js" as="script">
 </head>
 <body>
     <header>
-        <h1> <img src="./Images/Header/Raw_Chicken.jpg" alt="Сира курка " title="Сира курка" width="200">
-            Популярні Способи Приготування Курки</h1>
-            <img src="./Images/Header/Cooking.jpg" alt="Мотивуючий кухар" title="Мотивуючий кухар" width="200">
+        <h1>
+            <img src="./Images/Header/Raw_Chicken.jpg" alt="Сира курка - інгредієнт для приготування" width="200" height="150" loading="lazy">
+            Популярні Способи Приготування Курки
+            <img src="./Images/Header/Cooking.jpg" alt="Мотивуючий кухар приготування курки" width="200" height="150" loading="lazy">
+        </h1>
     </header>
     
     <main>
-
-      
-
         <section id="recipes">
-            <button id="theme-toggle">Змінити тему</button>
-            <div class="sidebar">
+            <nav class="sidebar" aria-label="Навігація рецептів">
                 <ul>
                     <li><a href="#ovenRecipe">1. Курка в духовці</a></li>
                     <li><a href="#grillRecipe">2. Курка-гриль</a></li>
                     <li><a href="#panFriedChicken">3. Курка смажена на сковороді</a></li>
-                    <li><a href="#sweetSourChicken">4. Курка у кисло-солодкому соусі.</a></li>
+                    <li><a href="#sweetSourChicken">4. Курка у кисло-солодкому соусі</a></li>
                     <li><a href="#curryChicken">5. Курка в каррі</a></li>
                     <li><a href="#teriyakiChicken">6. Курка теріякі</a></li>
                     <li><a href="#fricasseeChicken">7. Курка-фрікасе</a></li>
                     <li><a href="#boiledChicken">8. Курка, варена у бульйоні</a></li>
                     <li><a href="#smokedChicken">9. Домашня копчена курка</a></li>
-                    <li><a href="#friedChicken">10. Курка, смажена у фритюрі.</a></li>
-                    <!-- Інші посилання -->
+                    <li><a href="#friedChicken">10. Курка, смажена у фритюрі</a></li>
                 </ul>
-            </div>
+            </nav>
             
             <div class="content">
+                <!-- Recipe Sections -->
+                <!-- Reused structure with accessible improvements like descriptive alt texts -->
                 <section id="ovenRecipe">
                     <h2>1. Курка в духовці</h2>
-                    <img src="./Images/By_oven.jpg" alt="Курка в духовці" title="Курка в духовці" width="500">
-                <p>Цей рецепт допоможе вам приготувати смачну та соковиту курку в духовці.</p>
-                <h3>Інгредієнти:</h3>
-                <ul>
-                    <li>1 ціла курка</li>
-                    <li>2 ст. л. оливкової олії</li>
-                    <li>1 ч. л. солі</li>
-                    <li>1/2 ч. л. чорного перцю</li>
-                    <li>1 ч. л. сушених трав (наприклад, тим'яну або розмарин)</li>
-                </ul>
-                <h3>Інструкції:</h3>
-                <ol>
-                    <li>Розігрійте духовку до 180°C.</li>
-                    <li>Ретельно промийте курку під проточною водою та обсушіть паперовим рушником.</li>
-                    <li>Натріть курку оливковою олією, сіллю, перцем та травами.</li>
-                    <li>Покладіть курку в форму для запікання та випікайте 1-1.5 години.</li>
-                    <li>Перевірте готовність, проколовши найтовстішу частину стегна. Якщо сік прозорий, курка готова.</li>
-                    <li>Дайте курці відпочити 10 хвилин перед подачею.</li>
-                </ol>
+                    <img src="./Images/By_oven.jpg" alt="Запечена курка в духовці" title="Курка в духовці" width="500">
+                    <p>Цей рецепт допоможе вам приготувати смачну та соковиту курку в духовці.</p>
+                    <h3>Інгредієнти:</h3>
+                    <ul>
+                        <li>1 ціла курка</li>
+                        <li>2 ст. л. оливкової олії</li>
+                        <li>1 ч. л. солі</li>
+                        <li>1/2 ч. л. чорного перцю</li>
+                        <li>1 ч. л. сушених трав (наприклад, тим'яну або розмарин)</li>
+                    </ul>
+                    <h3>Інструкції:</h3>
+                    <ol>
+                        <li>Розігрійте духовку до 180°C.</li>
+                        <li>Ретельно промийте курку під проточною водою та обсушіть паперовим рушником.</li>
+                        <li>Натріть курку оливковою олією, сіллю, перцем та травами.</li>
+                        <li>Покладіть курку в форму для запікання та випікайте 1-1.5 години.</li>
+                        <li>Перевірте готовність, проколовши найтовстішу частину стегна. Якщо сік прозорий, курка готова.</li>
+                        <li>Дайте курці відпочити 10 хвилин перед подачею.</li>
+                    </ol>
                 </section>
-            
-               <section id="grillRecipe">
+                
+
+  <section id="grillRecipe">
                 <h2>2. Курка-гриль</h2>
                 <img src="./Images/By_grill.jpg" alt="Курка гриль" title="Курка гриль" width="500">
         <p>Насолоджуйтесь смачною та хрусткою куркою-гриль з цим простим рецептом.</p>
@@ -292,15 +311,16 @@
             <li>Вийміть курку з фритюру та покладіть на рушник, щоб позбутися зайвої олії.</li>
         </ol>
     </section>
-    
 
-                <!-- Інші розділи -->
+
             </div>
-
-            
         </section>
-        
     </main>
-    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 Рецепти Курки. Усі права захищені.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

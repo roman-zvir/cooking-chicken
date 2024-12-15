@@ -1,210 +1,197 @@
-/* Основні стилі */
-body {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
-    line-height: 1.6;
+:root {
+    /* Enhanced color palette with more depth */
+    --primary-color: #2c3e50;
+    --secondary-color: #e67e22;
+    --accent-color: #3498db;
+    --light-bg: #f8f9fa;
+    --light-text: #333;
+    --header-bg-light: #ffffff;
+    --card-bg-light: #ffffff;
+    
+    /* Refined shadows and transitions */
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
-header, header h1, header img {
-    display: inline-block;
-    vertical-align: middle;
+/* Reset and base styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Заголовки */
-h1, h2, h3 {
-    color: #0056b3; /* Синій колір для заголовків */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: var(--light-text);
+    background-color: var(--light-bg);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Стилі для світлої теми (за замовчуванням) */
+/* Enhanced Header */
 header {
-    background-color: white;
-    color: black;
+    background-color: var(--header-bg-light);
+    padding: 1.5rem;
     text-align: center;
-    padding: 1rem 0;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border: 1px solid #0056b3;
-    width: 100%;
-    z-index: 1000;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: static;
+    top: 0;
+    z-index: 100;
 }
-
 
 header h1 {
-    font-size: 2.5em; /* Більший розмір шрифта */
-    font-weight: bold; /* Жирний шрифт */
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-header:hover h1 {
-    color: #6649dd; /* Зміна кольору при наведенні */
+header img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 1rem;
+    transition: transform 0.3s ease;
 }
 
-body.dark header {
-    background-color: #181A1B; /* Темний колір фону для темної теми */
-    color: white; /* Білий колір тексту */
-    text-align: center;
-    padding: 1rem 0;
-    border-color: yellow;
+header img:hover {
+    transform: scale(1.05);
 }
 
+/* Improved Main Content */
 main {
-    width: 80%; /* або інший відсоток/фіксована ширина */
-    margin: 0 auto; /* автоматичні маржини з обох боків для центрування */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
-body.dark header:hover h1 {
-    color: #e4e439; /* Змініть на бажаний колір при наведенні */
-}
-
-#theme-toggle {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-body.dark #theme-toggle {
-    background-color: yellow; /* Жовтий колір фону для темної теми */
-    color: black; /* Колір тексту на кнопці, якщо потрібно */
-    /* Інші стилі для кнопки в темній темі */
-}
-
-body.dark {
-    background-color: #1E2122; /* Dark background */
-    color: white; /* Light text color for better readability on dark background */
-}
-
-body.dark h1, body.dark h2, body.dark h3 {
-    color: #ffcc00; /* Different color for headings in dark mode */
-}
-
-
-/* Рецепти */
 #recipes {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background-color: var(--card-bg-light);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
 }
 
-/* Кнопки */
-button {
-    background-color: #0056b3;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+/* Sidebar Navigation */
+.sidebar {
+    flex: 0 0 250px;
+    background-color: var(--header-bg-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.3s;
 }
-
-button:hover {
-    background-color: #004494;
-}
-
-    @media (max-width: 768px) {
-        header, .content {
-            width: 100%;
-        }
-    }
-    
-    .sidebar {
-        width: 100%;
-        position: relative;
-        top: 0;
-        left: 0;
-    }
-    main {
-        width: 100%;
-        
-    }
-
-    main {
-        max-width: 1200px; /* або інша відповідна максимальна ширина */
-        margin: 0 auto; /* центрування на великих екранах */
-    }
-    
-
 
 .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    list-style: none;
 }
 
+.sidebar ul li {
+    margin-bottom: 0.5rem;
+}
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #000;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
     display: block;
-    padding: 10px;
-}
-.sidebar a:hover {
-    color: #0056b3; /* Зміна кольору посилань при наведенні */
-    text-decoration: underline; /* Підкреслення посилань */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar a {
-    text-decoration: none;
-    color: #333; /* Колір тексту посилань */
-    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+.sidebar ul li a:hover {
+    background-color: var(--accent-color);
+    color: white;
 }
 
-
-/* Стилі для темної теми */
-body.dark .sidebar {
-    background-color: #181A1B; /* Темний фон для sidebar в темній темі */
-    color: white; /* Білий колір тексту в темній темі */
-    border-color: yellow;
-}
-
-body.dark .sidebar a {
-    color: white; /* Білий колір посилань в темній темі */
-}
-
-body.dark .sidebar ul li a {
-    color: white; /* Also change these if they are not being targeted */
-}
-
-body.dark .sidebar a:hover {
-    color: yellow; /* Жовтий колір посилань при наведенні в темній темі */
-}
-
+/* Content Area */
 .content {
-    margin-right: 20%;
-    /* Інші стилі для основного контенту */
+    flex: 1;
+    min-width: 0;
 }
 
-/* Стилі для світлої теми (за замовчуванням) */
-#recipes {
-    background-color: white; /* Білий колір фону для світлої теми */
-    /* Інші стилі для цього елемента */
+.content section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+    transition: box-shadow 0.3s;
 }
 
-/* Стилі для темної теми */
-body.dark #recipes {
-    background-color: #181A1B; /* Темніший колір фону для темної теми */
-    color: white; /* Якщо є текст у цьому розділі, змініть колір тексту на білий */
-    /* Інші стилі для темної теми */
+.content section:hover {
+    box-shadow: var(--hover-shadow);
 }
 
-img {
+.content h2 {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.content img {
     max-width: 100%;
     height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.5em; /* Зменшений розмір шрифта для маленьких екранів */
+    #recipes {
+        flex-direction: column;
     }
 
-    header, .content, .sidebar {
-        width: 100%; /* Забезпечуємо, що ці елементи займають всю ширину екрану на мобільних пристроях */
-    }
-
-    .content, .sidebar {
-        margin-right: 0; /* Видаляємо зайвий відступ з правого боку */
+    .sidebar {
+        width: 100%;
+        margin-bottom: 1rem;
     }
 }
 
+/* Accessibility and Print Styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Update the sidebar to be sticky */
+.sidebar {
+    position: sticky;
+    top: 2rem;  /* Adjust this value to control how far from the top the sidebar sticks */
+    align-self: flex-start;
+    max-height: calc(100vh - 4rem);  /* Ensure it doesn't overflow the viewport */
+    overflow-y: auto;  /* Allow scrolling if content is too long */
+}
+
+/* Adjust the recipes section to use flexbox with a better layout */
+#recipes {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
