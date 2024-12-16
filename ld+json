@@ -1,0 +1,33 @@
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": "Курка в духовці",
+    "author": {
+        "@type": "Person",
+        "name": "Кулінарний блог"
+    },
+    "description": "Простий та смачний рецепт запеченої курки в духовці",
+    "prepTime": "PT15M",
+    "cookTime": "PT1H",
+    "totalTime": "PT1H15M",
+    "recipeYield": "4 порції",
+    "recipeIngredient": [
+        "1 ціла курка",
+        "2 ст. л. оливкової олії",
+        "1 ч. л. солі",
+        "1/2 ч. л. чорного перцю"
+    ],
+    "recipeInstructions": [
+        "Розігрійте духовку до 180°C",
+        "Промийте курку та обсушіть",
+        "Натріть курку спеціями",
+        "Випікайте 1-1.5 години"
+    ],
+    "nutrition": {
+        "@type": "NutritionInformation",
+        "servingSize": "1 порція",
+        "calories": "250 кал"
+    }
+}
+</script>
