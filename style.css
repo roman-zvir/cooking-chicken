@@ -211,5 +211,94 @@ html {
         }
         #back-to-top:hover {
             opacity: 0.8;
-        }
+}
 
+/* Button Styles */
+.ingredient-scaler {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--light-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.ingredient-scaler label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.ingredient-scaler input {
+    width: 80px;
+    padding: 0.5rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: center;
+    transition: 
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.ingredient-scaler input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.print-button,
+.ingredient-scaler input {
+    background-color: var(--card-bg-light);
+    color: var(--primary-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 
+        background-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+.print-button {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.print-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.print-button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+/* Add a print icon */
+.print-button::before {
+    content: '🖨️';
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ingredient-scaler {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .ingredient-scaler input {
+        width: 100%;
+    }
+}

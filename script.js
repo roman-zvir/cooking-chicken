@@ -1,48 +1,75 @@
- document.addEventListener('DOMContentLoaded', () => {
-    // Back to Top Button
+document.addEventListener('DOMContentLoaded', () => {
+    // Back to Top Button (previous implementation)
     const backToTopButton = document.getElementById('back-to-top');
     
-    window.addEventListener('scroll', () => {
+    const toggleBackToTopVisibility = () => {
         backToTopButton.style.display = 
             window.pageYOffset > 300 ? 'block' : 'none';
-    });
+    };
+
+    window.addEventListener('scroll', toggleBackToTopVisibility);
 
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Recipe Print Functionality
-    function setupRecipePrinting() {
-        const recipes = document.querySelectorAll('#recipes article');
-        recipes.forEach(recipe => {
+    // Improved Recipe Printing with Visual Feedback
+    const setupRecipePrinting = () => {
+        const recipeSections = document.querySelectorAll('#recipes section');
+        
+        recipeSections.forEach(recipe => {
             const printButton = document.createElement('button');
             printButton.textContent = 'Друкувати рецепт';
             printButton.classList.add('print-button');
+            
             printButton.addEventListener('click', () => {
-                const printContents = recipe.innerHTML;
-                const originalContents = document.body.innerHTML;
+                // Temporary visual feedback
+                printButton.classList.add('printing');
+                printButton.textContent = 'Друк...';
                 
-                document.body.innerHTML = `
-                    <div class="print-recipe">${printContents}</div>
-                `;
-                
-                window.print();
-                
-                document.body.innerHTML = originalContents;
-                setupRecipePrinting();
+                try {
+                    const printWindow = window.open('', '_blank');
+                    printWindow.document.write(`
+                        <html>
+                            <head>
+                                <title>Друк рецепту</title>
+                                <style>
+                                    body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; }
+                                    img { max-width: 100%; height: auto; }
+                                    h2 { color: #2c3e50; border-bottom: 2px solid #e67e22; }
+                                </style>
+                            </head>
+                            <body>
+                                ${recipe.innerHTML}
+                            </body>
+                        </html>
+                    `);
+                    printWindow.document.close();
+                    printWindow.print();
+                    
+                    // Reset button after printing
+                    setTimeout(() => {
+                        printButton.classList.remove('printing');
+                        printButton.textContent = 'Друкувати рецепт';
+                    }, 1000);
+                } catch (error) {
+                    console.error('Помилка друку:', error);
+                    printButton.textContent = 'Помилка друку';
+                    printButton.style.backgroundColor = 'red';
+                    printButton.style.color = 'white';
+                }
             });
             
             recipe.appendChild(printButton);
         });
-    }
+    };
 
-    setupRecipePrinting();
-
-    // Recipe Ingredient Scaler
-    function setupIngredientScaler() {
-        const recipes = document.querySelectorAll('#recipes article');
-        recipes.forEach(recipe => {
+    // Improved Ingredient Scaling with Enhanced Validation
+    const setupIngredientScaler = () => {
+        const recipeSections = document.querySelectorAll('#recipes section');
+        
+        recipeSections.forEach(recipe => {
             const scalerContainer = document.createElement('div');
             scalerContainer.classList.add('ingredient-scaler');
             
@@ -53,9 +80,12 @@
             scalerInput.type = 'number';
             scalerInput.value = 1;
             scalerInput.min = 1;
+            scalerInput.max = 10;
+            scalerInput.setAttribute('aria-label', 'Кількість порцій');
             
             scalerInput.addEventListener('change', () => {
                 const ingredients = recipe.querySelectorAll('ul li');
+                
                 ingredients.forEach(ingredient => {
                     const originalText = ingredient.getAttribute('data-original') || ingredient.textContent;
                     ingredient.setAttribute('data-original', originalText);
@@ -64,7 +94,11 @@
                     if (match) {
                         const quantity = parseFloat(match[1]);
                         const unit = match[2];
-                        const newQuantity = (quantity * scalerInput.value).toFixed(1);
+                        
+                        // Safety checks
+                        const scaleFactor = Math.min(Math.max(scalerInput.value, 1), 10);
+                        const newQuantity = (quantity * scaleFactor).toFixed(1);
+                        
                         ingredient.textContent = `${newQuantity} ${unit}`;
                     }
                 });
@@ -74,7 +108,8 @@
             scalerContainer.appendChild(scalerInput);
             recipe.insertBefore(scalerContainer, recipe.querySelector('ul'));
         });
-    }
+    };
 
+    setupRecipePrinting();
     setupIngredientScaler();
 });
