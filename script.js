@@ -65,51 +65,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Improved Ingredient Scaling with Enhanced Validation
-    const setupIngredientScaler = () => {
-        const recipeSections = document.querySelectorAll('#recipes section');
-        
-        recipeSections.forEach(recipe => {
-            const scalerContainer = document.createElement('div');
-            scalerContainer.classList.add('ingredient-scaler');
-            
-            const scalerLabel = document.createElement('label');
-            scalerLabel.textContent = 'Кількість порцій: ';
-            
-            const scalerInput = document.createElement('input');
-            scalerInput.type = 'number';
-            scalerInput.value = 1;
-            scalerInput.min = 1;
-            scalerInput.max = 10;
-            scalerInput.setAttribute('aria-label', 'Кількість порцій');
-            
-            scalerInput.addEventListener('change', () => {
-                const ingredients = recipe.querySelectorAll('ul li');
-                
-                ingredients.forEach(ingredient => {
-                    const originalText = ingredient.getAttribute('data-original') || ingredient.textContent;
-                    ingredient.setAttribute('data-original', originalText);
-                    
-                    const match = originalText.match(/(\d+(?:\.\d+)?)\s*([а-яА-Я\w]+)/);
-                    if (match) {
-                        const quantity = parseFloat(match[1]);
-                        const unit = match[2];
-                        
-                        // Safety checks
-                        const scaleFactor = Math.min(Math.max(scalerInput.value, 1), 10);
-                        const newQuantity = (quantity * scaleFactor).toFixed(1);
-                        
-                        ingredient.textContent = `${newQuantity} ${unit}`;
-                    }
-                });
-            });
-            
-            scalerContainer.appendChild(scalerLabel);
-            scalerContainer.appendChild(scalerInput);
-            recipe.insertBefore(scalerContainer, recipe.querySelector('ul'));
-        });
-    };
 
+// Improved Ingredient Scaling with Enhanced Validation
+const setupIngredientScaler = () => {
+    const recipeSections = document.querySelectorAll('#recipes section');
+    
+    recipeSections.forEach(recipe => {
+        const scalerContainer = document.createElement('div');
+        scalerContainer.classList.add('ingredient-scaler');
+        
+        const scalerLabel = document.createElement('label');
+        scalerLabel.textContent = 'Кількість порцій: ';
+        
+        const scalerInput = document.createElement('input');
+        scalerInput.type = 'number';
+        scalerInput.value = 1;
+        scalerInput.min = 1;
+        scalerInput.max = 10;
+        scalerInput.setAttribute('aria-label', 'Кількість порцій');
+        
+        scalerInput.addEventListener('change', () => {
+            const scaleFactor = Math.min(Math.max(parseFloat(scalerInput.value), 1), 10);
+            scalerInput.value = scaleFactor; // Clamp input value
+            
+            const ingredients = recipe.querySelectorAll('ul li');
+            
+            ingredients.forEach(ingredient => {
+                // Store original text if not already stored
+                if (!ingredient.hasAttribute('data-original')) {
+                    ingredient.setAttribute('data-original', ingredient.textContent);
+                }
+                const originalText = ingredient.getAttribute('data-original');
+                
+                // Regex to match quantity and unit
+                const match = originalText.match(/^(\d+(?:\.\d+)?)\s*(.*)$/);
+                if (match) {
+                    const quantity = parseFloat(match[1]);
+                    const unit = match[2];
+                    
+                    const newQuantity = (quantity * scaleFactor).toFixed(1);
+                    ingredient.textContent = `${newQuantity} ${unit}`;
+                } else {
+                    // If no match, restore original text
+                    ingredient.textContent = originalText;
+                }
+            });
+        });
+        
+        scalerContainer.appendChild(scalerLabel);
+        scalerContainer.appendChild(scalerInput);
+        recipe.insertBefore(scalerContainer, recipe.querySelector('ul'));
+    });
+};
     setupRecipePrinting();
     setupIngredientScaler();
 });
