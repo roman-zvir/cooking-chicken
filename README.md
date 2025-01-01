@@ -2,7 +2,7 @@
 
 Welcome to **Cooking Chicken in Ukrainian**, your ultimate resource for mastering the art of cooking chicken in a variety of styles, all while embracing the richness of the Ukrainian language and culinary tradition. This project is a comprehensive guide designed for food enthusiasts, home cooks, and anyone interested in exploring chicken recipes with a Ukrainian twist.  
 
-🌐 **Visit the Site**: [Cooking Chicken](https://roman-zvir.github.io/Cooking_chicken/)  
+🌐 **Visit the Site**: [Cooking Chicken](https://roman-zvir.github.io/cooking-chicken/)  
 ![image](https://github.com/user-attachments/assets/5b16812e-1dee-40e1-9bc9-1f2025b611ae)
 
 ## What This Project Offers  
